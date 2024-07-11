@@ -1,33 +1,52 @@
-1) Index Page:
+Student Management System
+Overview
+The Student Management System is a web-based application designed to manage student records. It allows users to add, update, delete, and search for students. The system is built using Java, JSP, Servlets, and MySQL.
 
-The index page (index.jsp) contains a form to add a new student with fields for name, email, and age.
-It also includes a button to view the list of students.
+Features
+1)Add Student: Allows users to add a new student record with name, email, and age.
+2)View Students: Displays a list of all students in the database.
+3)Update Student: Enables users to update existing student records.
+4)Delete Student: Allows users to delete a student record.
+5)Search Students: Provides functionality to search students by ID, name, email, or age.
 
-2)Add Student:
-When a user fills in the student details and clicks the "Submit" button, the form data is sent to the CreateServlet.
-CreateServlet collects the data, creates a new Student object, and uses StudentDAOImpl to add the student to the database.
-After adding the student, the user is redirected back to the home page (home.jsp) with a success message.
+Setup and Installation
+1) Prerequisites:
 
-3)View Students:
-When a user clicks the "View Students" button, the request is sent to the ReadServlet.
-ReadServlet retrieves the list of students from the database using StudentDAOImpl and sets this list as a request attribute.
-The user is forwarded to home.jsp, which displays the list of students.
+-> Java Development Kit (JDK)
+-> Apache Tomcat Server
+-> MySQL Database
 
-4) Home Page:
-The home page (home.jsp) displays the list of all students retrieved from the database.
-Each student entry has "Edit" and "Delete" buttons.
+2) Database Setup:
+-> Create a database named student_db.
+-> Create a table students with columns id, name, email, and age.
+   
+3) Project Configuration:
+-> Update the MySQL database connection details in the project.
+   
+How to Run
+1) Deploy the application:
+  -> Deploy the application on the Apache Tomcat server.
+  
+2) Access the application:
+  -> Open a web browser and go to http://localhost:9090/StudentCRUDApp.
+  
+3) Using the Application:
+  -> Home Page: Displays options to add a student or view the student list.
+  -> Add Student: Fill in the student details and submit the form to add a new student.
+  ->View Students: Displays all students. Options are available to update or delete each student.
+  ->Search Students: Use the search bar to find students by ID, name, email, or age.
+   
+Folder Structure
+-->> src/main/java: Contains the Java source files.
+      ->com.sunbase.dao: Contains DAO interfaces and implementations.
+      ->com.sunbase.models: Contains the Student POJO class.
+      ->com.sunbase.servlets: Contains the servlet classes.
+-->> src/main/webapp: Contains the JSP files and static resources.
 
-5) Update Student:
-When a user clicks the "Edit" button next to a student, they are redirected to an update form (update.jsp).
-After updating the details and submitting the form, the data is sent to the UpdateServlet.
-UpdateServlet updates the student details in the database and redirects back to home.jsp with a success message.
 
-6)Delete Student:
-When a user clicks the "Delete" button next to a student, a confirmation pop-up appears.
-Upon confirmation, the request is sent to the DeleteServlet.
-DeleteServlet deletes the student from the database and redirects back to home.jsp with a success message.
+Code Explanation
+* Student.java: The POJO class for the student entity.
+* StudentDAO.java: Interface defining CRUD operations.
+* StudentDAOImpl.java: Implementation of the StudentDAO interface.
+* Servlets: Handle HTTP requests and responses for creating, reading, updating, and deleting students.
 
-7)Search Students:
-Users can search for students using the search bar on the home page.
-The search form sends the search parameters to the SearchServlet.
-SearchServlet retrieves the matching students from the database and forwards the list to home.jsp for display.
